@@ -1,0 +1,59 @@
+# Office-noise end-of-turn evaluation
+
+7820 English clips from smart-turn-data-v3.2-test. Office-5 noise is unseen by every model. Each model gets its deployment input (C: noise-suppressed; others: raw). Thresholds from each model's own val set at a 5% cut-in budget.
+
+## Headline: office-5 at 10 dB
+
+| Model | PR-AUC [95% CI] | ROC-AUC | Recall @ ≤5% cut-in (best thr) | Val thr → recall | Val thr → cut-in |
+|---|---:|---:|---:|---:|---:|
+| A: Pipecat-native | 0.978 [0.974, 0.981] | 0.982 | 0.908 | 0.927 | 0.058 |
+| B: + office-3 | 0.981 [0.978, 0.984] | 0.984 | 0.910 | 0.920 | 0.055 |
+| C: + office-3 -> NS | 0.978 [0.974, 0.982] | 0.982 | 0.901 | 0.906 | 0.051 |
+| Smart Turn v3.2 (fp32) | 0.973 [0.967, 0.977] | 0.979 | 0.885 | 0.948 | 0.089 |
+
+## PR-AUC by noise level
+
+| Model | native | office-5 20 dB | 10 dB | 5 dB | 0 dB* | office-3 10 dB (seen) |
+|---|---:|---:|---:|---:|---:|---:|
+| A: Pipecat-native | 0.986 | 0.985 | 0.978 | 0.966 | 0.930 | 0.973 |
+| B: + office-3 | 0.986 | 0.985 | 0.981 | 0.972 | 0.947 | 0.980 |
+| C: + office-3 -> NS | 0.985 | 0.984 | 0.978 | 0.970 | 0.946 | 0.979 |
+| Smart Turn v3.2 (fp32) | 0.980 | 0.979 | 0.973 | 0.962 | 0.918 | 0.970 |
+
+## Recall at ≤5% cut-in by noise level
+
+| Model | native | office-5 20 dB | 10 dB | 5 dB | 0 dB* | office-3 10 dB (seen) |
+|---|---:|---:|---:|---:|---:|---:|
+| A: Pipecat-native | 0.948 | 0.944 | 0.908 | 0.834 | 0.650 | 0.888 |
+| B: + office-3 | 0.953 | 0.948 | 0.910 | 0.862 | 0.730 | 0.915 |
+| C: + office-3 -> NS | 0.947 | 0.946 | 0.901 | 0.845 | 0.720 | 0.912 |
+| Smart Turn v3.2 (fp32) | 0.942 | 0.926 | 0.885 | 0.811 | 0.615 | 0.863 |
+
+## Cut-in rate at the val threshold (drift under noise)
+
+| Model | native | office-5 20 dB | 10 dB | 5 dB | 0 dB* | office-3 10 dB (seen) |
+|---|---:|---:|---:|---:|---:|---:|
+| A: Pipecat-native | 0.045 | 0.048 | 0.058 | 0.080 | 0.142 | 0.059 |
+| B: + office-3 | 0.041 | 0.043 | 0.055 | 0.062 | 0.099 | 0.051 |
+| C: + office-3 -> NS | 0.038 | 0.041 | 0.051 | 0.060 | 0.090 | 0.047 |
+| Smart Turn v3.2 (fp32) | 0.062 | 0.068 | 0.089 | 0.115 | 0.203 | 0.085 |
+
+*0 dB is louder than anything in training (5-20 dB).
+
+## Full matrix: PR-AUC for every model on every input
+
+| Model | native raw / NS | office-5 20 dB raw / NS | 10 dB raw / NS | 5 dB raw / NS | 0 dB* raw / NS | office-3 10 dB (seen) raw / NS |
+|---|---:|---:|---:|---:|---:|---:|
+| A: Pipecat-native | 0.986 / 0.985 | 0.985 / 0.983 | 0.978 / 0.976 | 0.966 / 0.964 | 0.930 / 0.929 | 0.973 / 0.974 |
+| B: + office-3 | 0.986 / 0.984 | 0.985 / 0.984 | 0.981 / 0.977 | 0.972 / 0.968 | 0.947 / 0.941 | 0.980 / 0.977 |
+| C: + office-3 -> NS | 0.985 / 0.985 | 0.984 / 0.984 | 0.979 / 0.978 | 0.969 / 0.970 | 0.943 / 0.946 | 0.978 / 0.979 |
+| Smart Turn v3.2 (fp32) | 0.980 / 0.980 | 0.979 / 0.978 | 0.973 / 0.971 | 0.962 / 0.955 | 0.918 / 0.914 | 0.970 / 0.964 |
+
+## Native test split by the clip's own background level (Pipecat already mixed some noise in)
+
+| Model | quiet (< -48 dBFS) | middle | noisy (> -41 dBFS) |
+|---|---:|---:|---:|
+| A: Pipecat-native | 0.991 | 0.986 | 0.980 |
+| B: + office-3 | 0.991 | 0.985 | 0.981 |
+| C: + office-3 -> NS | 0.989 | 0.984 | 0.981 |
+| Smart Turn v3.2 (fp32) | 0.990 | 0.974 | 0.977 |

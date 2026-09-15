@@ -1,0 +1,16 @@
+condition B: 59177 train / 6625 val clips on cuda
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/167 [00:00<?, ?it/s]Loading weights: 100%|##########| 167/167 [00:00<00:00, 1764.61it/s]
+50 steps in 9s -> ETA 6 min for 1848 steps
+13:32:45 epoch 1 step 200/1848 loss 0.3848 (0.6 min, 0.18 s/step)
+13:33:21 epoch 1 step 400/1848 loss 0.2343 (1.2 min, 0.18 s/step)
+13:33:58 epoch 1 step 600/1848 loss 0.1977 (1.8 min, 0.18 s/step)
+13:34:34 epoch 1 step 800/1848 loss 0.1942 (2.4 min, 0.18 s/step)
+{"epoch": 1, "step": 924, "train_loss": 0.24336639752619582, "val_pr_auc": 0.9752919786554771, "val_roc_auc": 0.9802617643187795, "val_acc": 0.9346415094339623, "minutes": 2.9514334042867025}
+13:35:19 epoch 2 step 1000/1848 loss 0.1369 (3.2 min, 0.23 s/step)
+13:35:54 epoch 2 step 1200/1848 loss 0.1309 (3.7 min, 0.17 s/step)
+13:36:29 epoch 2 step 1400/1848 loss 0.1213 (4.3 min, 0.17 s/step)
+13:37:46 epoch 2 step 1600/1848 loss 0.1273 (5.6 min, 0.39 s/step)
+13:39:33 epoch 2 step 1800/1848 loss 0.1173 (7.4 min, 0.53 s/step)
+{"epoch": 2, "step": 1848, "train_loss": 0.1240661612951733, "val_pr_auc": 0.9803049586270359, "val_roc_auc": 0.983864496368557, "val_acc": 0.941433962264151, "minutes": 8.278676835695903}
+saved C:\eot\runs\B\model.pt

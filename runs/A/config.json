@@ -1,0 +1,13 @@
+{
+  "condition": "A",
+  "epochs": 2,
+  "batch": 64,
+  "lr": 0.0003,
+  "head_lr": 0.001,
+  "warmup": 0.1,
+  "seed": 0,
+  "limit": null,
+  "out": "/Users/siddharthsingh/Desktop/Happyrobot 2/runs/A",
+  "n_train": 59177,
+  "n_val": 6625
+}

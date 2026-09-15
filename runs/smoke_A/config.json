@@ -1,0 +1,13 @@
+{
+  "condition": "A",
+  "epochs": 1,
+  "batch": 64,
+  "lr": 0.0003,
+  "head_lr": 0.001,
+  "warmup": 0.1,
+  "seed": 0,
+  "limit": 4000,
+  "out": "runs/smoke_A",
+  "n_train": 4000,
+  "n_val": 4000
+}

@@ -1,0 +1,9 @@
+{
+  "condition": "A",
+  "model": "model.onnx",
+  "description": "Whisper-tiny encoder + LoRA (merged) + classifier head; trained on Pipecat-native English speech",
+  "threshold": 0.7210147380828859,
+  "threshold_rule": "lowest threshold with <=5% cut-in on this model's validation set",
+  "sample_rate": 16000,
+  "window_seconds": 8
+}

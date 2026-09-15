@@ -1,0 +1,9 @@
+{
+  "condition": "C",
+  "model": "model.onnx",
+  "description": "Whisper-tiny encoder + LoRA (merged) + classifier head; trained on B's audio after WebRTC noise suppression",
+  "threshold": 0.7935878634452821,
+  "threshold_rule": "lowest threshold with <=5% cut-in on this model's validation set",
+  "sample_rate": 16000,
+  "window_seconds": 8
+}

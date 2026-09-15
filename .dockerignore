@@ -1,0 +1,12 @@
+.venv
+data
+logs
+reports
+smart-turn
+runs/smoke_A
+runs/**/*.pt
+runs/**/*.npz
+runs/**/*.jsonl
+**/__pycache__
+*.mp3
+*.pdf

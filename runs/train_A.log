@@ -1,0 +1,16 @@
+condition A: 59177 train / 6625 val clips on mps
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/167 [00:00<?, ?it/s]Loading weights: 100%|██████████| 167/167 [00:00<00:00, 12556.45it/s]
+50 steps in 40s -> ETA 25 min for 1848 steps
+13:13:14 epoch 1 step 200/1848 loss 0.3640 (2.7 min, 0.80 s/step, mps 7.6 GB)
+13:15:56 epoch 1 step 400/1848 loss 0.2137 (5.4 min, 0.81 s/step, mps 7.6 GB)
+13:18:39 epoch 1 step 600/1848 loss 0.1872 (8.1 min, 0.82 s/step, mps 7.6 GB)
+13:21:22 epoch 1 step 800/1848 loss 0.1717 (10.8 min, 0.82 s/step, mps 7.6 GB)
+{"epoch": 1, "step": 924, "train_loss": 0.22467875703604837, "val_pr_auc": 0.981883982830885, "val_roc_auc": 0.9846412434661915, "val_acc": 0.9399245283018868, "minutes": 13.003310199578603}
+13:24:35 epoch 2 step 1000/1848 loss 0.1190 (14.0 min, 0.96 s/step, mps 8.7 GB)
+13:27:18 epoch 2 step 1200/1848 loss 0.1146 (16.7 min, 0.81 s/step, mps 8.7 GB)
+13:30:04 epoch 2 step 1400/1848 loss 0.1066 (19.5 min, 0.83 s/step, mps 8.7 GB)
+13:32:50 epoch 2 step 1600/1848 loss 0.1146 (22.3 min, 0.83 s/step, mps 8.7 GB)
+13:35:35 epoch 2 step 1800/1848 loss 0.1028 (25.0 min, 0.83 s/step, mps 8.7 GB)
+{"epoch": 2, "step": 1848, "train_loss": 0.10941071099666193, "val_pr_auc": 0.9855316379899921, "val_roc_auc": 0.9875793381261601, "val_acc": 0.9498867924528301, "minutes": 26.176871665318806}
+saved /Users/siddharthsingh/Desktop/Happyrobot 2/runs/A/model.pt

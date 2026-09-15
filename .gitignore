@@ -1,0 +1,17 @@
+# Environments and caches
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# Data: regenerate with eot_lora/download.py and prepare_data.py (see README)
+data/
+logs/
+models/
+*.mp3
+*.pdf
+sym_shape_infer_temp.onnx
+
+# Third-party code, cloned for reference (github.com/pipecat-ai/smart-turn)
+smart-turn/

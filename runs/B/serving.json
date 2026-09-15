@@ -1,0 +1,9 @@
+{
+  "condition": "B",
+  "model": "model.onnx",
+  "description": "Whisper-tiny encoder + LoRA (merged) + classifier head; trained on English speech + office-3 noise (80% of clips, 5-20 dB SNR)",
+  "threshold": 0.7735762000083924,
+  "threshold_rule": "lowest threshold with <=5% cut-in on this model's validation set",
+  "sample_rate": 16000,
+  "window_seconds": 8
+}

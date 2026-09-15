@@ -1,0 +1,49 @@
+  scored ST on test_native_ns
+  scored ST on test_office5_20_ns
+  scored ST on test_office5_10_ns
+  scored ST on test_office5_5_ns
+  scored ST on test_office5_0_ns
+  scored ST on test_office3_10_ns
+# Office-noise end-of-turn evaluation
+
+7820 English clips from smart-turn-data-v3.2-test. Office-5 noise is unseen by every model. Each model gets its deployment input (C: noise-suppressed; others: raw). Thresholds from each model's own val set at a 5% cut-in budget.
+
+## Headline: office-5 at 10 dB
+
+| Model | PR-AUC [95% CI] | ROC-AUC | Recall @ ≤5% cut-in (best thr) | Val thr → recall | Val thr → cut-in |
+|---|---:|---:|---:|---:|---:|
+| Smart Turn v3.2 (fp32) | 0.973 [0.967, 0.977] | 0.979 | 0.885 | 0.948 | 0.089 |
+
+## PR-AUC by noise level
+
+| Model | native | office-5 20 dB | 10 dB | 5 dB | 0 dB* | office-3 10 dB (seen) |
+|---|---:|---:|---:|---:|---:|---:|
+| Smart Turn v3.2 (fp32) | 0.980 | 0.979 | 0.973 | 0.962 | 0.918 | 0.970 |
+
+## Recall at ≤5% cut-in by noise level
+
+| Model | native | office-5 20 dB | 10 dB | 5 dB | 0 dB* | office-3 10 dB (seen) |
+|---|---:|---:|---:|---:|---:|---:|
+| Smart Turn v3.2 (fp32) | 0.942 | 0.926 | 0.885 | 0.811 | 0.615 | 0.863 |
+
+## Cut-in rate at the val threshold (drift under noise)
+
+| Model | native | office-5 20 dB | 10 dB | 5 dB | 0 dB* | office-3 10 dB (seen) |
+|---|---:|---:|---:|---:|---:|---:|
+| Smart Turn v3.2 (fp32) | 0.062 | 0.068 | 0.089 | 0.115 | 0.203 | 0.085 |
+
+*0 dB is louder than anything in training (5-20 dB).
+
+## Full matrix: PR-AUC for every model on every input
+
+| Model | native raw / NS | office-5 20 dB raw / NS | 10 dB raw / NS | 5 dB raw / NS | 0 dB* raw / NS | office-3 10 dB (seen) raw / NS |
+|---|---:|---:|---:|---:|---:|---:|
+| Smart Turn v3.2 (fp32) | 0.980 / 0.980 | 0.979 / 0.978 | 0.973 / 0.971 | 0.962 / 0.955 | 0.918 / 0.914 | 0.970 / 0.964 |
+
+## Native test split by the clip's own background level (Pipecat already mixed some noise in)
+
+| Model | quiet (< -48 dBFS) | middle | noisy (> -41 dBFS) |
+|---|---:|---:|---:|
+| Smart Turn v3.2 (fp32) | 0.990 | 0.974 | 0.977 |
+
+libc++abi: terminating due to uncaught exception of type std::__1::system_error: recursive_mutex lock failed: Invalid argument
